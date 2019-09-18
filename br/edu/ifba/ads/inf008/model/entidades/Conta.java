@@ -1,5 +1,8 @@
 package br.edu.ifba.ads.inf008.model.entidades;
-public abstract class Conta{
+
+import java.io.Serializable;
+
+public abstract class Conta implements Serializable{
     private String nome;
     protected double saldo;
     

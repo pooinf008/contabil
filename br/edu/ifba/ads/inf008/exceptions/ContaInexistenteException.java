@@ -1,4 +1,4 @@
-package br.edu.ifba.ads.inf008.example.exceptions;
+package br.edu.ifba.ads.inf008.exceptions;
 
 public class ContaInexistenteException extends 
 	Exception{

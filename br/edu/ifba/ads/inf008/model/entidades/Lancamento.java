@@ -1,8 +1,8 @@
 package br.edu.ifba.ads.inf008.model.entidades;
 
-import javax.print.StreamPrintServiceFactory;
+import java.io.Serializable;
 
-public class Lancamento{
+public class Lancamento implements Serializable{
     private String descricao;
     private double valor;
     private Conta credito;
