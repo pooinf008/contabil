@@ -17,6 +17,8 @@ import br.edu.ifba.ads.inf008.persistence.file.ContaFileDAO;
 import br.edu.ifba.ads.inf008.persistence.file.LancamentoFileDAO;
 import br.edu.ifba.ads.inf008.persistence.memory.ContaMemoryDAO;
 import br.edu.ifba.ads.inf008.persistence.memory.LancamentoMemoryDAO;
+import br.edu.ifba.ads.inf008.persistence.sql.ContaSQLDAO;
+import br.edu.ifba.ads.inf008.persistence.sql.LancamentoSQLDAO;
 
 public class RegistroContabil{
 	
@@ -24,8 +26,8 @@ public class RegistroContabil{
   private LancamentoDAO lancamentoDAO;	
   
   public RegistroContabil() throws ClassNotFoundException, IOException {
-	  this.contaDAO = new ContaFileDAO();
-	  this.lancamentoDAO = new LancamentoFileDAO();
+	  this.contaDAO = new ContaSQLDAO();
+	  this.lancamentoDAO = new LancamentoSQLDAO();
   }
   
   public void registrarFato(String descricao, String nomeCredito,

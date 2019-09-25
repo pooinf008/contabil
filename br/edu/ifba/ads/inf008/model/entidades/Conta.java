@@ -6,6 +6,9 @@ public abstract class Conta implements Serializable{
     private String nome;
     protected double saldo;
     
+    public Conta() {
+	}	
+    
     public Conta(String nome) {
 		super();
 		this.nome = nome;
@@ -14,8 +17,22 @@ public abstract class Conta implements Serializable{
 	public String getNome(){
         return this.nome;
     }   
+	
+	
     
-    public abstract void creditar(double valor);   
+    public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+
+	public double getSaldo() {
+		return saldo;
+	}
+
+	public abstract void creditar(double valor);   
     
     public abstract void debitar(double valor);
 
