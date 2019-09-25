@@ -20,7 +20,7 @@ import br.edu.ifba.ads.inf008.persistence.memory.LancamentoMemoryDAO;
 import br.edu.ifba.ads.inf008.persistence.sql.ContaSQLDAO;
 import br.edu.ifba.ads.inf008.persistence.sql.LancamentoSQLDAO;
 
-public class RegistroContabil{
+public class RegistroContabil implements RegistroContabilApp{
 	
   private ContaDAO contaDAO;
   private LancamentoDAO lancamentoDAO;	
@@ -30,10 +30,18 @@ public class RegistroContabil{
 	  this.lancamentoDAO = new LancamentoSQLDAO();
   }
   
-  public void registrarFato(String descricao, String nomeCredito,
-                            String nomeDebito, double valor) throws ContaInexistenteException, ContabilException{
-    Conta credito = this.contaDAO.findContaByNome(nomeCredito); 
-    Conta debito = this.contaDAO.findContaByNome(nomeDebito); 
+  public void registrarFato(String nomeCredito,String nomeDebito,
+		  				    String descricao,
+                            double valor) throws ContabilException{
+    Conta credito;
+    Conta debito; 
+    
+	try {
+		credito = this.contaDAO.findContaByNome(nomeCredito);
+		debito = this.contaDAO.findContaByNome(nomeDebito);		
+	} catch (ContaInexistenteException e) {
+		throw new ContabilException(e);
+	} 
     Lancamento lancamento = new Lancamento(descricao, valor,
             credito, debito);   
     this.lancamentoDAO.save(lancamento);
